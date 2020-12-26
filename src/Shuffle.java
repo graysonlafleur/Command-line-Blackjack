@@ -18,13 +18,13 @@ public class Shuffle{
 		this.Deck = new ArrayList<String>();
 		shuffleDeck();
 	}
-
-	private ArrayList<String> shuffleDeck() {
-		arrangeDecks(Deck);
-		Collections.shuffle(Deck);
-		return Deck;
-	}
-
+	
+	/**
+	 * Creates a casino-grade blackjack deck of 6 decks combined
+	 * 
+	 * @param deck2
+	 */
+	
 	private void arrangeDecks(ArrayList<String> deck2) {
 		for(int i = 0; i<6; i++)
 		{
@@ -34,6 +34,20 @@ public class Shuffle{
 			}
 		}
 	}
+	
+	/**
+	 * Shuffles the decks
+	 * 
+	 * @return Shuffled deck
+	 */
+
+	private ArrayList<String> shuffleDeck() {
+		arrangeDecks(Deck);
+		Collections.shuffle(Deck);
+		return Deck;
+	}
+
+	
 	
 	
 }

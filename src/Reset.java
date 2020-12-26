@@ -3,6 +3,10 @@ import java.io.InputStreamReader;
 
 public class Reset extends Blackjack{
 	
+	/**
+	 * Resets all necessary values for a new game.
+	 */
+	
 	public Reset() {
 		NewDeck = new Shuffle();
 		Remaining = new CardsInDeck(NewDeck.Deck);

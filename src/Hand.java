@@ -5,12 +5,22 @@ import java.util.ArrayList;
 
 public class Hand {
 	
+	//Player's hand
 	public ArrayList<String> Hand;
+	
+	//Player's hands if they split
 	public ArrayList<Hand> SplitHands;
+	
+	//Cards remaining in the deck
 	public CardsInDeck Remaining;
+	
+	//Card values
 	public CardValue Value;
-	public String splitCard;
+	
+	//Accepts inputs
 	public BufferedReader br;
+	
+	//Boolean values for checking certain in-game statuses
 	public boolean canSplit;
 	public boolean hasSplit;
 	public boolean lost;
@@ -29,7 +39,6 @@ public class Hand {
 	
 	public Hand(String splitCard, CardsInDeck Remaining) {
 		this.Hand = new ArrayList<String>();
-		this.splitCard = splitCard;
 		this.Remaining = Remaining;
 		this.br = new BufferedReader(new InputStreamReader(System.in));
 		this.canSplit = false;
@@ -38,9 +47,23 @@ public class Hand {
 		Hand.add(splitCard);
 	}
 	
+	/**
+	 * Gives the player they're starting cards
+	 * 
+	 * @throws InterruptedException
+	 */
+	
 	public void startingCards() throws InterruptedException {
 		Hand.add(Remaining.hit());
 	}
+	
+	/**
+	 * All actions the player can take before splitting,
+	 * assuming they do so.
+	 * 
+	 * @throws IOException
+	 * @throws InterruptedException
+	 */
 	
 	public void playHandPreSplit() throws IOException, InterruptedException {
 		if(Value.areSame(Hand.get(0), Hand.get(1))) canSplit=true;
@@ -81,6 +104,13 @@ public class Hand {
 		}
 	}
 	
+	/**
+	 * All actions a player can do after they split.
+	 * 
+	 * @throws IOException
+	 * @throws InterruptedException
+	 */
+	
 	private void playHandPostSplit() throws IOException, InterruptedException {
 		while(true) {
 			String Response = br.readLine();
@@ -107,6 +137,12 @@ public class Hand {
 			}
 		}
 	}
+	
+	/**
+	 * Plays the dealer's hand.
+	 * 
+	 * @throws InterruptedException
+	 */
 	
 	public void dealerHand() throws InterruptedException {
 		System.out.println("The dealer flipped a " + Hand.get(1));
